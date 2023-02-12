@@ -33,3 +33,20 @@ function task1() {
 
   console.log(solutionUser);
 }
+
+function task2() {
+  /* Korisnik unosi broj osoba koje želi dodati.
+  Kreira niz osoba čiji su atributi - ime, prezime,
+  boja očiju, boja kose i visina. Ispisati imena
+  osoba kojima se boja kose i očiju poklapa, a da
+  su po visini veći od medijana visina. */
+
+  const numberOfUsers = +prompt("Unesi broj koliko osoba zelis dodati.");
+  for (let i = 0; i < numberOfUsers; i++) {
+    let name = prompt("Unesi ime");
+    let surname = prompt("Unesi prezime");
+    let eyeColour = prompt("Unesi boju ociju");
+    let hairColout = prompt("Unesi boju kose");
+    let height = +prompt("Unesi visinu");
+  }
+}
