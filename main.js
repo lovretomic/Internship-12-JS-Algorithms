@@ -1,11 +1,4 @@
 function task1() {
-  /* Korisnik unosi redom ime, prezime i visinu.
-  Nakon unosa korisnika se pita želi li završiti
-  s unosom. Ako odgovori NE ponovno se traži unos.
-  Ako odgovori DA izračunati prosječnu visinu i
-  ispisat osobu (cijeli objekt) čija visina najviše
-  odskače od prosječne. */
-
   const users = [];
   do {
     let name = prompt("Unesi ime");
@@ -95,8 +88,6 @@ let fruits = [
 ];
 
 function task3() {
-  /* Od zadanog niza (definiran na dnu) kreirati
-  novi niz sa svim voćem kojem su ime i boja isti */
   const filteredFruits = fruits.filter((fruit) => {
     if (fruit.name === fruit.color) return fruit;
   });
@@ -121,9 +112,6 @@ let fruits2 = [
 ];
 
 function task4() {
-  /* Iz liste voća s više boja pronađi sva voća s žutom bojom
-  i promijeni ju u crvenu. Ispiši staro i novo voće */
-
   const yellowFruits = fruits2.map((fruit) => {
     let singleFruit = JSON.parse(JSON.stringify(fruit));
     if (singleFruit.color.includes('yellow')) {
@@ -150,8 +138,6 @@ function task4() {
 }
 
 function task5() {
-  /* Filtrirat u novi array svo voće koje ima žutu boju */
-
   const yellowFruits = fruits2.filter((fruit) => {
     if (fruit.color.includes('yellow')) return fruit;
   });
@@ -165,11 +151,6 @@ function task5() {
 }
 
 function task6() {
-  /* Ispiši korisniku sadržaj košarice (lista voća). Ukoliko
-  postoji neko voce koje nije spremno za prodaju unutar te košarice
-  ispiši mu i listu indexa tih ne spremnih voća. Kreiraj novu košaricu
-  bez tih voća i predloži mu kupnju s ispisom novog sadržaja košarice */
-
   let indexes = [];
   let readyFruits = [];
   fruits.forEach((fruit, i) => {
@@ -187,8 +168,6 @@ function task6() {
 }
 
 function task7() {
-  /* Sortiraj košaricu po imenu voća */
-
   fruits.sort((first, second) => first.name > second.name ? 1 : -1);
   let fruitNames = [];
   fruits.forEach((fruit) => fruitNames.push(fruit.name));
@@ -196,10 +175,6 @@ function task7() {
 }
 
 function task8() {
-  /* Riješi problem Gaussove dosjetke koristeći petlje i JS ugrađene
-  funkcije nad listama (zabranjeno korištenje formule). Sami napravite
-  array s prvih 100 prirodnih brojeva (bonus points ako napravit bez petlje) */
-
   let generatedNums = [];
   function generateNums(begin, end) {
     generatedNums.push(begin);
@@ -216,8 +191,5 @@ function task8() {
 }
 
 function task9() {
-  /* Traži unos podataka (string) u formatu riječi odvojenih s razmakom i
-  ispiši ih u CSV formatu */
-
   alert(prompt("Unesi podatke odvojene razmakom.").split(' ').join(', '));
 }
