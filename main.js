@@ -159,3 +159,31 @@ function task7() {
   fruits.sort((first, second) => first.name > second.name ? 1 : -1);
   console.log(fruits);
 }
+
+function task8() {
+  /* Riješi problem Gaussove dosjetke koristeći petlje i JS ugrađene
+  funkcije nad listama (zabranjeno korištenje formule). Sami napravite
+  array s prvih 100 prirodnih brojeva (bonus points ako napravit bez petlje) */
+
+  let generatedNums = [];
+  function generateNums(begin, end) {
+    generatedNums.push(begin);
+    if (begin < end) generateNums(begin + 1, end);
+  }
+  generateNums(1, 100);
+  
+  let sum = 0;
+  let pair = generatedNums[0] + generatedNums[generatedNums.length - 1];
+  sum = Math.floor(generatedNums.length / 2) * pair;
+  if (generatedNums.length % 2 !== 0) sum += generatedNums[Math.ceil(generatedNums.length / 2)];
+
+  console.log(sum);
+}
+
+function task9() {
+  /* Traži unos podataka (string) u formatu riječi odvojenih s razmakom i
+  ispiši ih u CSV formatu */
+
+  const input = prompt("Unesi podatke odvojene razmakom.");
+  alert(input.split(' ').join(', '));
+}
