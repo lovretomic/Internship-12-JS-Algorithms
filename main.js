@@ -91,25 +91,71 @@ class Fruit {
   }
 }
 
+let fruits = [
+  new Fruit('banana', 'yellow', false),
+  new Fruit('apple', 'green', false),
+  new Fruit('orange', 'orange', true),
+  new Fruit('mango', 'yellow', true),
+  new Fruit('avocado', 'green', true),
+  new Fruit('strawberry', 'red', false),
+  new Fruit('cherry', 'red', true),
+  new Fruit('tangerine', 'orange', false),
+  new Fruit('blueberry', 'blue', false)
+];
+
 function task3() {
   /* Od zadanog niza (definiran na dnu) kreirati
   novi niz sa svim voćem kojem su ime i boja isti */
-
-  let fruits = [
-    new Fruit('banana', 'yellow', false),
-    new Fruit('apple', 'green', false),
-    new Fruit('orange', 'orange', false),
-    new Fruit('mango', 'yellow', false),
-    new Fruit('avocado', 'green', false),
-    new Fruit('strawberry', 'red', false),
-    new Fruit('cherry', 'red', false),
-    new Fruit('tangerine', 'orange', false),
-    new Fruit('blueberry', 'blue', false)
-  ];
-  
   const filteredFruits = fruits.filter((fruit) => {
     if (fruit.name === fruit.color) return fruit;
   });
 
   console.log(filteredFruits);
+}
+
+function task4() {
+  /* Iz liste voća s više boja pronađi sva voća s žutom bojom
+  i promijeni ju u crvenu. Ispiši staro i novo voće */
+
+  const yellowFruits = fruits.map((fruit) => {
+    /*
+    let singleFruit = {name: fruit.name, color: fruit.color, isForSale: true };
+    if (singleFruit.color === 'yellow') singleFruit.color = 'red';
+    return singleFruit;
+    */
+   return {name: fruit.name, color: fruit.color === 'yellow' ? 'red': fruit.color, isForSale: true }
+  });
+
+  console.log(fruits, yellowFruits); 
+}
+
+function task5() {
+  /* Filtrirat u novi array svo voće koje ima žutu boju */
+  const yellowFruits = fruits.filter((fruit) => {
+    if (fruit.color === 'yellow') return fruit;
+  });
+
+  console.log(yellowFruits);
+}
+
+function task6() {
+  /* Ispiši korisniku sadržaj košarice (lista voća). Ukoliko
+  postoji neko voce koje nije spremno za prodaju unutar te košarice
+  ispiši mu i listu indexa tih ne spremnih voća. Kreiraj novu košaricu
+  bez tih voća i predloži mu kupnju s ispisom novog sadržaja košarice */
+
+  let indexes = [];
+  let readyFruits = [];
+  fruits.forEach((fruit, i) => {
+    if (!fruit.ready) indexes.push(i);
+    else readyFruits.push(fruit);
+  });
+
+  console.log(readyFruits);
+}
+
+function task7() {
+  /* Sortiraj košaricu po imenu voća */
+  fruits.sort((first, second) => first.name > second.name ? 1 : -1);
+  console.log(fruits);
 }
