@@ -37,12 +37,6 @@ function task1() {
 }
 
 function task2() {
-  /* Korisnik unosi broj osoba koje želi dodati.
-  Kreira niz osoba čiji su atributi - ime, prezime,
-  boja očiju, boja kose i visina. Ispisati imena osoba
-  kojima se boja kose i očiju poklapa, a da su po visini
-  veći od medijana visina. */
-
   const users = [];
   const heights = [];
   const n = +prompt("Koliko osoba želiš dodati?");
@@ -65,22 +59,12 @@ function task2() {
 
   heights.sort();
   const median = n % 2 == 0 ? (heights[Math.floor(n/2) - 1] + heights[Math.floor(n/2)]) / 2 : heights[Math.floor(n/2)];
+  const filteredUsers = users.filter((user) => {
+    if (user.hairColor === user.eyeColor && user.height > median) return user;
+  })
+
   console.log(median);
-
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      console.log(users[i], users[j])
-      if (i !== j &&
-          users[i].hairColor === users[j].hairColor &&
-          users[i].eyeColor === users[j].eyeColor &&
-          users[i].height >= median && users[j].height >= median)
-      {
-        console.log(users[i], users[j]);
-      }
-    }
-  }
-
-
+  console.log(filteredUsers);
 }
 
 class Fruit {
