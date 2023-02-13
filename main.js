@@ -101,7 +101,11 @@ function task3() {
     if (fruit.name === fruit.color) return fruit;
   });
 
-  console.log(filteredFruits);
+  let filteredFruitNames = [];
+  filteredFruits.forEach((fruit) => {
+    filteredFruitNames.push(fruit.name);
+  })
+  alert(`Voće kojemo su ime i boja isti: ${filteredFruitNames.join(', ')}`);
 }
 
 let fruits2 = [
@@ -130,16 +134,34 @@ function task4() {
     return singleFruit;
   });
 
-  console.log(fruits2, yellowFruits); 
+  alert("Ispisujem staro voće...");
+  fruits2.forEach((fruit) => {
+    let colors = []
+    fruit.color.forEach((c) => colors.push(c));
+    alert(`Ime: ${fruit.name} (${colors.join(', ')})`);
+  })
+
+  alert("Ispisujem novo voće...");
+  yellowFruits.forEach((fruit) => {
+    let colors = []
+    fruit.color.forEach((c) => colors.push(c));
+    alert(`Ime: ${fruit.name} (${colors.join(', ')})`);
+  })
 }
 
 function task5() {
   /* Filtrirat u novi array svo voće koje ima žutu boju */
-  const yellowFruits = fruits.filter((fruit) => {
-    if (fruit.color === 'yellow') return fruit;
+
+  const yellowFruits = fruits2.filter((fruit) => {
+    if (fruit.color.includes('yellow')) return fruit;
   });
 
-  console.log(yellowFruits);
+  let yellowFruitNames = [];
+  yellowFruits.forEach((fruit) => {
+    yellowFruitNames.push(fruit.name);
+  })
+
+  alert(`Voće koje ima žutu boju: ${yellowFruitNames.join(', ')}`);
 }
 
 function task6() {
@@ -155,13 +177,22 @@ function task6() {
     else readyFruits.push(fruit);
   });
 
-  console.log(readyFruits);
+  let readyFruitNames = [];
+  readyFruits.forEach((fruit) => {
+    readyFruitNames.push(fruit.name);
+  })
+
+  alert(`Voće koje nije spremno: ${indexes.join(', ')}`);
+  alert(`Novi sadržaj košarice: ${readyFruitNames.join(', ')}`);
 }
 
 function task7() {
   /* Sortiraj košaricu po imenu voća */
+
   fruits.sort((first, second) => first.name > second.name ? 1 : -1);
-  console.log(fruits);
+  let fruitNames = [];
+  fruits.forEach((fruit) => fruitNames.push(fruit.name));
+  alert(fruitNames.join(', '));
 }
 
 function task8() {
@@ -181,13 +212,12 @@ function task8() {
   sum = Math.floor(generatedNums.length / 2) * pair;
   if (generatedNums.length % 2 !== 0) sum += generatedNums[Math.ceil(generatedNums.length / 2)];
 
-  console.log(sum);
+  alert(sum);
 }
 
 function task9() {
   /* Traži unos podataka (string) u formatu riječi odvojenih s razmakom i
   ispiši ih u CSV formatu */
 
-  const input = prompt("Unesi podatke odvojene razmakom.");
-  alert(input.split(' ').join(', '));
+  alert(prompt("Unesi podatke odvojene razmakom.").split(' ').join(', '));
 }
