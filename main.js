@@ -14,7 +14,7 @@ function task1() {
     const user = {
       name: name,
       surname: surname,
-      height: height,
+      height: height
     };
     users.push(user);
   } while (!confirm("Zelis li zavrsiti s unosom?"));
@@ -33,7 +33,7 @@ function task1() {
     }
   }
 
-  console.log(solutionUser);
+  alert(`Ime: ${solutionUser.name} ${solutionUser.surname} | Visina: ${solutionUser.height}`);
 }
 
 function task2() {
@@ -63,8 +63,15 @@ function task2() {
     if (user.hairColor === user.eyeColor && user.height > median) return user;
   })
 
+  const filteredNames = [];
+  filteredUsers.forEach((user) => filteredNames.push(`${user.name} ${user.surname}`));
+
+  console.log(heights);
   console.log(median);
   console.log(filteredUsers);
+  console.log(filteredNames);
+
+  alert(`Traženi korisnici: ${filteredNames.join(', ')}`);
 }
 
 class Fruit {
@@ -97,20 +104,33 @@ function task3() {
   console.log(filteredFruits);
 }
 
+let fruits2 = [
+  new Fruit('banana', ['yellow'], false),
+  new Fruit('apple', ['green', 'red'], false),
+  new Fruit('orange', ['orange'], true),
+  new Fruit('mango', ['yellow', 'green'], true),
+  new Fruit('avocado', ['green'], true),
+  new Fruit('strawberry', ['red'], false),
+  new Fruit('cherry', ['red'], true),
+  new Fruit('tangerine', ['orange'], false),
+  new Fruit('blueberry', ['blue', 'purple'], false)
+];
+
 function task4() {
   /* Iz liste voća s više boja pronađi sva voća s žutom bojom
   i promijeni ju u crvenu. Ispiši staro i novo voće */
 
-  const yellowFruits = fruits.map((fruit) => {
-    /*
-    let singleFruit = {name: fruit.name, color: fruit.color, isForSale: true };
-    if (singleFruit.color === 'yellow') singleFruit.color = 'red';
+  const yellowFruits = fruits2.map((fruit) => {
+    let singleFruit = JSON.parse(JSON.stringify(fruit));
+    if (singleFruit.color.includes('yellow')) {
+      const index = singleFruit.color.indexOf('yellow');
+      singleFruit.color.splice(index, 1);
+      if (!singleFruit.color.includes('red')) singleFruit.color.push('red');
+    }
     return singleFruit;
-    */
-   return {name: fruit.name, color: fruit.color === 'yellow' ? 'red': fruit.color, isForSale: true }
   });
 
-  console.log(fruits, yellowFruits); 
+  console.log(fruits2, yellowFruits); 
 }
 
 function task5() {
